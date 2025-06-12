@@ -37,27 +37,93 @@ You will:
 - npm or yarn
 - Postman, Insomnia, or curl for API testing
 
-## API Endpoints
+# Product API - Express.js Assignment
 
-The API will have the following endpoints:
+This is a simple RESTful API for managing products, built with Express.js.  
+It supports CRUD operations, filtering, pagination, search, and statistics.
 
-- `GET /api/products`: Get all products
-- `GET /api/products/:id`: Get a specific product
-- `POST /api/products`: Create a new product
-- `PUT /api/products/:id`: Update a product
-- `DELETE /api/products/:id`: Delete a product
+## Features
 
-## Submission
+- **CRUD**: Create, Read, Update, Delete products
+- **Filtering**: Filter products by category
+- **Pagination**: Paginate product listings
+- **Search**: Search products by name
+- **Statistics**: Get product counts by category
+- **Error Handling**: Centralized error middleware
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+## Endpoints
 
-1. Complete all the required API endpoints
-2. Implement the middleware and error handling
-3. Document your API in the README.md
-4. Include examples of requests and responses
+| Method | Endpoint                   | Description                                 |
+|--------|----------------------------|---------------------------------------------|
+| GET    | `/api/products`            | List products (supports filtering & pagination) |
+| GET    | `/api/products/:id`        | Get a single product by ID                  |
+| POST   | `/api/products`            | Create a new product                        |
+| PUT    | `/api/products/:id`        | Update a product by ID                      |
+| DELETE | `/api/products/:id`        | Delete a product by ID                      |
+| GET    | `/api/products/search`     | Search products by name                     |
+| GET    | `/api/products/stats`      | Get product statistics by category          |
 
-## Resources
+### Query Parameters
 
-- [Express.js Documentation](https://expressjs.com/)
-- [RESTful API Design Best Practices](https://restfulapi.net/)
-- [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) 
+- **Filtering by category:**  
+  `/api/products?category=electronics`
+- **Pagination:**  
+  `/api/products?page=2&limit=5`
+- **Search:**  
+  `/api/products/search?name=laptop`
+
+---
+
+## Installation
+
+1. **Clone the repository:**
+   ```sh
+   git clone <repository-url>
+   cd week-2-express-js-assignment-achore26
+   ```
+
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+
+3. **Create a `.env` file in the project root:**
+   ```
+   PORT=3000
+   ```
+
+4. **Start the server:**
+   ```sh
+   node server.js
+   ```
+   Or, for development with auto-reload:
+   ```sh
+   npx nodemon server.js
+   ```
+
+5. **Access the API:**  
+   Visit [http://localhost:3000/api/products](http://localhost:3000/api/products) in your browser or use tools like Postman.
+
+---
+
+## Example Product Object
+
+```json
+{
+  "id": "1",
+  "name": "Laptop",
+  "description": "High-performance laptop with 16GB RAM",
+  "price": 1200,
+  "category": "electronics",
+  "inStock": true
+}
+```
+
+---
+
+## Notes
+
+- This API uses an in-memory array for products. Data will reset when the server restarts.
+- For production, connect to a real database.
+
+---
